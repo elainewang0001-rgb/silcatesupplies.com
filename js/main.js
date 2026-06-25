@@ -22,13 +22,31 @@ window.addEventListener('scroll', () => {
 // Contact form
 const form = document.getElementById('contactForm');
 if (form) {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const success = document.getElementById('formSuccess');
-    if (success) {
-      success.style.display = 'block';
-      form.reset();
-      setTimeout(() => { success.style.display = 'none'; }, 5000);
+    const error = document.getElementById('formError');
+    const submitBtn = form.querySelector('.form-submit');
+    if (error) error.style.display = 'none';
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/ZZTSilicate.info@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (!response.ok) throw new Error('Form submission failed');
+
+      if (success) {
+        success.style.display = 'block';
+        form.reset();
+        setTimeout(() => { success.style.display = 'none'; }, 5000);
+      }
+    } catch (err) {
+      if (error) error.style.display = 'block';
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
     }
   });
 }

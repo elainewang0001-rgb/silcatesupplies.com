@@ -19,64 +19,72 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Contact form
-const HUBSPOT_PORTAL_ID = '246608904';
-const HUBSPOT_FORM_GUID = '92ca0967-c6f3-461b-995f-57c24f5bf623';
+// Product button — store selected product and pre-fill form
+let hsFormReady = false;
+let hsFormEl = null;
 
-const form = document.getElementById('contactForm');
-if (form) {
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const success = document.getElementById('formSuccess');
-    const error = document.getElementById('formError');
-    const submitBtn = form.querySelector('.form-submit');
-    if (error) error.style.display = 'none';
-    if (submitBtn) submitBtn.disabled = true;
+function fillProductInForm(product, isSample) {
+  if (!hsFormEl) return;
+  const msg = isSample
+    ? 'I would like to request a sample of: ' + product
+    : 'I am inquiring about: ' + product;
+  const textarea = hsFormEl.querySelector('textarea[name="message"]');
+  if (textarea) {
+    textarea.value = msg;
+    textarea.dispatchEvent(new Event('input', { bubbles: true }));
+    textarea.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+}
 
-    const getCookie = name => {
-      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-      return match ? match[2] : undefined;
-    };
+document.querySelectorAll('[data-product]').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const product = this.dataset.product;
+    const isSample = this.dataset.sample === 'true';
+    sessionStorage.setItem('hsProduct', product);
+    sessionStorage.setItem('hsSample', isSample);
+    if (hsFormReady) fillProductInForm(product, isSample);
+  });
+});
 
-    const payload = {
-      submittedAt: Date.now().toString(),
-      fields: [
-        { name: 'firstname', value: document.getElementById('fname').value },
-        { name: 'lastname',  value: document.getElementById('lname').value },
-        { name: 'email',     value: document.getElementById('email').value },
-        { name: 'company',   value: document.getElementById('company').value },
-        { name: 'phone',     value: document.getElementById('phone').value },
-        { name: 'message',   value: `Product of Interest: ${document.getElementById('product').value}\n\n${document.getElementById('message').value}` },
-      ],
-      context: {
-        pageUri: window.location.href,
-        pageName: document.title,
-      },
-    };
-
-    const hutk = getCookie('hubspotutk');
-    if (hutk) payload.context.hutk = hutk;
-
-    try {
-      const response = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        }
-      );
-      if (!response.ok) throw new Error('Submission failed');
-
-      if (success) {
-        success.style.display = 'block';
-        form.reset();
-        setTimeout(() => { success.style.display = 'none'; }, 5000);
+// HubSpot form init
+if (typeof hbspt !== 'undefined') {
+  hbspt.forms.create({
+    region: 'na2',
+    portalId: '246608904',
+    formId: '92ca0967-c6f3-461b-995f-57c24f5bf623',
+    target: '#hubspotForm',
+    onFormReady: function($form) {
+      hsFormEl = document.querySelector('#hubspotForm form') || ($form && $form[0]);
+      hsFormReady = true;
+      const product = sessionStorage.getItem('hsProduct');
+      const isSample = sessionStorage.getItem('hsSample') === 'true';
+      if (product) {
+        fillProductInForm(product, isSample);
+        sessionStorage.removeItem('hsProduct');
+        sessionStorage.removeItem('hsSample');
       }
-    } catch (err) {
-      if (error) error.style.display = 'block';
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+} else {
+  window.addEventListener('load', function() {
+    if (typeof hbspt !== 'undefined') {
+      hbspt.forms.create({
+        region: 'na2',
+        portalId: '246608904',
+        formId: '92ca0967-c6f3-461b-995f-57c24f5bf623',
+        target: '#hubspotForm',
+        onFormReady: function($form) {
+          hsFormEl = document.querySelector('#hubspotForm form') || ($form && $form[0]);
+          hsFormReady = true;
+          const product = sessionStorage.getItem('hsProduct');
+          const isSample = sessionStorage.getItem('hsSample') === 'true';
+          if (product) {
+            fillProductInForm(product, isSample);
+            sessionStorage.removeItem('hsProduct');
+            sessionStorage.removeItem('hsSample');
+          }
+        }
+      });
     }
   });
 }

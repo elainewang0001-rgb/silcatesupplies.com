@@ -20,6 +20,9 @@ window.addEventListener('scroll', () => {
 });
 
 // Contact form
+const HUBSPOT_PORTAL_ID = '246608904';
+const HUBSPOT_FORM_GUID = '92ca0967-c6f3-461b-995f-57c24f5bf623';
+
 const form = document.getElementById('contactForm');
 if (form) {
   form.addEventListener('submit', async e => {
@@ -30,13 +33,39 @@ if (form) {
     if (error) error.style.display = 'none';
     if (submitBtn) submitBtn.disabled = true;
 
+    const getCookie = name => {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : undefined;
+    };
+
+    const payload = {
+      submittedAt: Date.now().toString(),
+      fields: [
+        { name: 'firstname', value: document.getElementById('fname').value },
+        { name: 'lastname',  value: document.getElementById('lname').value },
+        { name: 'email',     value: document.getElementById('email').value },
+        { name: 'company',   value: document.getElementById('company').value },
+        { name: 'message',   value: `Product of Interest: ${document.getElementById('product').value}\n\n${document.getElementById('message').value}` },
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title,
+      },
+    };
+
+    const hutk = getCookie('hubspotutk');
+    if (hutk) payload.context.hutk = hutk;
+
     try {
-      const response = await fetch('https://formsubmit.co/ajax/ZZTSilicate.info@gmail.com', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      });
-      if (!response.ok) throw new Error('Form submission failed');
+      const response = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (!response.ok) throw new Error('Submission failed');
 
       if (success) {
         success.style.display = 'block';

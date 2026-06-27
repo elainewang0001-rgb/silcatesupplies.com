@@ -19,17 +19,19 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Product buttons — show selected product above the form
+// Product buttons — pre-fill message field with product name
 document.querySelectorAll('[data-product]').forEach(btn => {
   btn.addEventListener('click', function() {
     const product = this.dataset.product;
     const isSample = this.dataset.sample === 'true';
-    const notice = document.getElementById('productNotice');
-    if (notice) {
-      notice.textContent = isSample
-        ? '🧪 Sample request for: ' + product
-        : '📋 Inquiry about: ' + product;
-      notice.style.display = 'block';
+    const msg = isSample
+      ? 'Sample request for: ' + product
+      : 'Inquiry about: ' + product;
+
+    if (window.hsForm) {
+      window.hsForm.find('textarea[name="message"]').val(msg).trigger('change');
+    } else {
+      window.pendingHsMsg = msg;
     }
   });
 });

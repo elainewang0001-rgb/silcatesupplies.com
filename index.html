@@ -6,7 +6,6 @@
   <title>Silcate Supplies | Inorganic Silicon Compounds</title>
   <meta name="description" content="Leading global manufacturer of inorganic silicon compounds — sodium metasilicate, sodium silicate, silicon-based flame retardants, and silica sol. Founded 2011 in China." />
   <link rel="stylesheet" href="css/style.css" />
-  <script src="https://js-na2.hsforms.net/forms/embed/246608904.js" defer></script>
 </head>
 <body>
 
@@ -303,8 +302,7 @@
 
       <div class="contact-form">
         <h3>Send an Inquiry</h3>
-        <div id="productNotice" style="display:none;background:#e8f4fd;border-left:4px solid #1a3c5e;padding:10px 14px;margin-bottom:12px;border-radius:4px;font-size:.95rem;color:#1a3c5e;"></div>
-        <div class="hs-form-frame" data-region="na2" data-form-id="92ca0967-c6f3-461b-995f-57c24f5bf623" data-portal-id="246608904"></div>
+        <div id="hubspotForm"></div>
       </div>
     </div>
   </div>
@@ -351,5 +349,22 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    region: 'na2',
+    portalId: '246608904',
+    formId: '92ca0967-c6f3-461b-995f-57c24f5bf623',
+    target: '#hubspotForm',
+    onFormReady: function($form) {
+      window.hsForm = $form;
+      var msg = window.pendingHsMsg;
+      if (msg) {
+        $form.find('textarea[name="message"]').val(msg).trigger('change');
+        window.pendingHsMsg = null;
+      }
+    }
+  });
+</script>
 </body>
 </html>

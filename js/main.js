@@ -45,6 +45,7 @@ if (form) {
         { name: 'lastname',  value: document.getElementById('lname').value },
         { name: 'email',     value: document.getElementById('email').value },
         { name: 'company',   value: document.getElementById('company').value },
+        { name: 'phone',     value: document.getElementById('phone').value },
         { name: 'message',   value: `Product of Interest: ${document.getElementById('product').value}\n\n${document.getElementById('message').value}` },
       ],
       context: {

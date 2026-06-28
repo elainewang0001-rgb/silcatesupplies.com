@@ -1,34 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
-  <!-- Hexagon background (chemistry reference) -->
-  <polygon points="150,20 260,80 260,200 150,260 40,200 40,80"
-           fill="#1a3c5e" stroke="#e8a020" stroke-width="6"/>
+  <defs>
+    <!-- 3D sphere gradients -->
+    <radialGradient id="si-grad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#f5d060"/>
+      <stop offset="100%" stop-color="#b8860b"/>
+    </radialGradient>
+    <radialGradient id="o-grad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ff8a80"/>
+      <stop offset="100%" stop-color="#c62828"/>
+    </radialGradient>
+    <radialGradient id="na-grad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#90caf9"/>
+      <stop offset="100%" stop-color="#1565c0"/>
+    </radialGradient>
+  </defs>
 
-  <!-- Inner hexagon accent -->
-  <polygon points="150,45 238,95 238,195 150,245 62,195 62,95"
-           fill="none" stroke="#e8a020" stroke-width="2" opacity="0.4"/>
+  <!-- Hexagon background -->
+  <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"
+           fill="#1a3c5e" stroke="#e8a020" stroke-width="5"/>
+
+  <!-- Inner hexagon ring -->
+  <polygon points="150,30 248,87 248,200 150,257 52,200 52,87"
+           fill="none" stroke="rgba(232,160,32,0.25)" stroke-width="1.5"/>
+
+  <!-- ===== Na2SiO3 Ball-and-Stick ===== -->
+  <!-- Bond lines (drawn first, behind atoms) -->
+  <!-- Si to O-left -->
+  <line x1="150" y1="108" x2="100" y2="135" stroke="rgba(255,255,255,0.7)" stroke-width="4" stroke-linecap="round"/>
+  <!-- Si to O-right -->
+  <line x1="150" y1="108" x2="200" y2="135" stroke="rgba(255,255,255,0.7)" stroke-width="4" stroke-linecap="round"/>
+  <!-- Si to O-bottom -->
+  <line x1="150" y1="108" x2="150" y2="152" stroke="rgba(255,255,255,0.7)" stroke-width="4" stroke-linecap="round"/>
+  <!-- O-left to Na-left -->
+  <line x1="100" y1="135" x2="62" y2="118" stroke="rgba(255,255,255,0.45)" stroke-width="3" stroke-linecap="round"/>
+  <!-- O-right to Na-right -->
+  <line x1="200" y1="135" x2="238" y2="118" stroke="rgba(255,255,255,0.45)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Na left atom -->
+  <circle cx="56" cy="113" r="20" fill="url(#na-grad)"/>
+  <text x="56" y="118" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Na</text>
+
+  <!-- O left atom -->
+  <circle cx="97" cy="138" r="16" fill="url(#o-grad)"/>
+  <text x="97" y="143" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">O</text>
+
+  <!-- Si center atom (largest) -->
+  <circle cx="150" cy="103" r="24" fill="url(#si-grad)"/>
+  <text x="150" y="109" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white" text-anchor="middle">Si</text>
+
+  <!-- O right atom -->
+  <circle cx="203" cy="138" r="16" fill="url(#o-grad)"/>
+  <text x="203" y="143" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">O</text>
+
+  <!-- Na right atom -->
+  <circle cx="244" cy="113" r="20" fill="url(#na-grad)"/>
+  <text x="244" y="118" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Na</text>
+
+  <!-- O bottom atom -->
+  <circle cx="150" cy="158" r="16" fill="url(#o-grad)"/>
+  <text x="150" y="163" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">O</text>
 
   <!-- ZZT Text -->
-  <text x="150" y="158"
+  <text x="150" y="218"
         font-family="Arial Black, Arial, sans-serif"
         font-weight="900"
-        font-size="90"
+        font-size="62"
         fill="#ffffff"
         text-anchor="middle"
-        letter-spacing="-4">ZZT</text>
+        letter-spacing="-2">ZZT</text>
 
-  <!-- Industrial -->
-  <text x="150" y="192"
+  <!-- INDUSTRIAL SUPPLIES -->
+  <text x="150" y="238"
         font-family="Arial, sans-serif"
-        font-size="17"
+        font-size="13"
         fill="#e8a020"
         text-anchor="middle"
-        letter-spacing="3">INDUSTRIAL</text>
-
-  <!-- Supplies -->
-  <text x="150" y="213"
-        font-family="Arial, sans-serif"
-        font-size="17"
-        fill="#e8a020"
-        text-anchor="middle"
-        letter-spacing="3">SUPPLIES</text>
+        letter-spacing="2">INDUSTRIAL SUPPLIES</text>
 </svg>

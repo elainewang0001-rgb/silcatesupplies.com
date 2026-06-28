@@ -1,105 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
-  <defs>
-    <filter id="text-glow" x="-15%" y="-15%" width="130%" height="130%">
-      <feGaussianBlur stdDeviation="3.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="atom-glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-
-    <!-- Background -->
-    <radialGradient id="bg" cx="50%" cy="35%" r="70%">
-      <stop offset="0%" stop-color="#0e2a45"/>
-      <stop offset="100%" stop-color="#05101a"/>
-    </radialGradient>
-
-    <!-- Na — purple -->
-    <radialGradient id="na" cx="32%" cy="28%" r="68%">
-      <stop offset="0%" stop-color="#c39bd3"/>
-      <stop offset="60%" stop-color="#8e44ad"/>
-      <stop offset="100%" stop-color="#4a235a"/>
-    </radialGradient>
-
-    <!-- Si — beige/tan -->
-    <radialGradient id="si" cx="32%" cy="28%" r="68%">
-      <stop offset="0%" stop-color="#e8d5b0"/>
-      <stop offset="60%" stop-color="#c4a472"/>
-      <stop offset="100%" stop-color="#7d6340"/>
-    </radialGradient>
-
-    <!-- O — red -->
-    <radialGradient id="ox" cx="32%" cy="28%" r="68%">
-      <stop offset="0%" stop-color="#ff8a80"/>
-      <stop offset="60%" stop-color="#e03030"/>
-      <stop offset="100%" stop-color="#7b0000"/>
-    </radialGradient>
-
-    <!-- Clip to hexagon -->
-    <clipPath id="hex-clip">
-      <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"/>
-    </clipPath>
-  </defs>
-
   <!-- Hexagon background -->
-  <polygon points="150,12 264,78 264,210 150,276 36,210 36,78" fill="url(#bg)"/>
+  <polygon points="150,20 260,80 260,200 150,260 40,200 40,80"
+           fill="#1a3c5e" stroke="#e8a020" stroke-width="6"/>
 
-  <!-- Molecular structure clipped inside hexagon — subtle background -->
-  <g clip-path="url(#hex-clip)" opacity="0.42">
+  <!-- Inner hexagon accent -->
+  <polygon points="150,45 238,95 238,195 150,245 62,195 62,95"
+           fill="none" stroke="#e8a020" stroke-width="2" opacity="0.4"/>
 
-    <!-- Bonds — gray sticks -->
-    <!-- Double bond: Si to O-top (two parallel lines) -->
-    <line x1="147" y1="88" x2="147" y2="58" stroke="#b0b0b0" stroke-width="3" stroke-linecap="round"/>
-    <line x1="153" y1="88" x2="153" y2="58" stroke="#b0b0b0" stroke-width="3" stroke-linecap="round"/>
-    <!-- Si to O-left -->
-    <line x1="146" y1="95" x2="116" y2="120" stroke="#c0c0c0" stroke-width="3.5" stroke-linecap="round"/>
-    <!-- Si to O-right -->
-    <line x1="154" y1="95" x2="184" y2="120" stroke="#c0c0c0" stroke-width="3.5" stroke-linecap="round"/>
-    <!-- O-left to Na-left -->
-    <line x1="109" y1="127" x2="76" y2="150" stroke="#c0c0c0" stroke-width="3.5" stroke-linecap="round"/>
-    <!-- O-right to Na-right -->
-    <line x1="191" y1="127" x2="224" y2="150" stroke="#c0c0c0" stroke-width="3.5" stroke-linecap="round"/>
-
-    <!-- Na left (large purple) -->
-    <circle cx="66" cy="158" r="20" fill="url(#na)" filter="url(#atom-glow)"/>
-    <!-- Na right (large purple) -->
-    <circle cx="234" cy="158" r="20" fill="url(#na)" filter="url(#atom-glow)"/>
-
-    <!-- O left (red) -->
-    <circle cx="112" cy="124" r="13" fill="url(#ox)" filter="url(#atom-glow)"/>
-    <!-- O right (red) -->
-    <circle cx="188" cy="124" r="13" fill="url(#ox)" filter="url(#atom-glow)"/>
-    <!-- O top (red, double bond) -->
-    <circle cx="150" cy="52" r="13" fill="url(#ox)" filter="url(#atom-glow)"/>
-
-    <!-- Si center (beige, medium) -->
-    <circle cx="150" cy="92" r="17" fill="url(#si)" filter="url(#atom-glow)"/>
-
-  </g>
-
-  <!-- Hexagon border -->
-  <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"
-           fill="none" stroke="#e8a020" stroke-width="3"/>
-  <polygon points="150,20 257,83 257,205 150,268 43,205 43,83"
-           fill="none" stroke="rgba(100,216,255,0.25)" stroke-width="1"/>
-
-  <!-- ZZT — large and dominant -->
-  <text x="150" y="205"
+  <!-- ZZT Text -->
+  <text x="150" y="175"
         font-family="Arial Black, Arial, sans-serif"
         font-weight="900"
-        font-size="110"
+        font-size="90"
         fill="#ffffff"
         text-anchor="middle"
-        letter-spacing="-4"
-        filter="url(#text-glow)">ZZT</text>
+        letter-spacing="-4">ZZT</text>
 
-  <!-- INDUSTRIAL SUPPLIES -->
-  <text x="150" y="232"
+  <!-- INDUSTRIAL -->
+  <text x="150" y="200"
         font-family="Arial, sans-serif"
-        font-size="12.5"
+        font-size="18"
         fill="#e8a020"
         text-anchor="middle"
-        letter-spacing="2.5">INDUSTRIAL SUPPLIES</text>
+        letter-spacing="3">INDUSTRIAL</text>
 
+  <!-- SUPPLIES -->
+  <text x="150" y="222"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        fill="#e8a020"
+        text-anchor="middle"
+        letter-spacing="3">SUPPLIES</text>
 </svg>

@@ -16,19 +16,11 @@
         text-anchor="middle"
         letter-spacing="-4">ZZT</text>
 
-  <!-- INDUSTRIAL -->
-  <text x="150" y="200"
+  <!-- Tagline -->
+  <text x="150" y="210"
         font-family="Arial, sans-serif"
         font-size="18"
         fill="#e8a020"
         text-anchor="middle"
         letter-spacing="3">INDUSTRIAL</text>
-
-  <!-- SUPPLIES -->
-  <text x="150" y="222"
-        font-family="Arial, sans-serif"
-        font-size="18"
-        fill="#e8a020"
-        text-anchor="middle"
-        letter-spacing="3">SUPPLIES</text>
 </svg>

@@ -1,25 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
   <defs>
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
+    <filter id="text-glow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="text-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
+    <filter id="atom-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
-      <stop offset="0%" stop-color="#0d2a47"/>
-      <stop offset="100%" stop-color="#060f1a"/>
+
+    <!-- Background -->
+    <radialGradient id="bg" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#0e2a45"/>
+      <stop offset="100%" stop-color="#05101a"/>
     </radialGradient>
-    <radialGradient id="node-blue" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#90d8ff"/>
-      <stop offset="100%" stop-color="#1a7abf"/>
+
+    <!-- Na — purple -->
+    <radialGradient id="na" cx="32%" cy="28%" r="68%">
+      <stop offset="0%" stop-color="#c39bd3"/>
+      <stop offset="60%" stop-color="#8e44ad"/>
+      <stop offset="100%" stop-color="#4a235a"/>
     </radialGradient>
-    <radialGradient id="node-gold" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#ffe066"/>
-      <stop offset="100%" stop-color="#e8a020"/>
+
+    <!-- Si — beige/tan -->
+    <radialGradient id="si" cx="32%" cy="28%" r="68%">
+      <stop offset="0%" stop-color="#e8d5b0"/>
+      <stop offset="60%" stop-color="#c4a472"/>
+      <stop offset="100%" stop-color="#7d6340"/>
     </radialGradient>
+
+    <!-- O — red -->
+    <radialGradient id="ox" cx="32%" cy="28%" r="68%">
+      <stop offset="0%" stop-color="#ff8a80"/>
+      <stop offset="60%" stop-color="#e03030"/>
+      <stop offset="100%" stop-color="#7b0000"/>
+    </radialGradient>
+
     <!-- Clip to hexagon -->
     <clipPath id="hex-clip">
       <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"/>
@@ -27,57 +43,63 @@
   </defs>
 
   <!-- Hexagon background -->
-  <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"
-           fill="url(#bg-grad)"/>
+  <polygon points="150,12 264,78 264,210 150,276 36,210 36,78" fill="url(#bg)"/>
 
-  <!-- Everything clipped inside hexagon -->
-  <g clip-path="url(#hex-clip)">
+  <!-- Molecular structure clipped inside hexagon — subtle background -->
+  <g clip-path="url(#hex-clip)" opacity="0.42">
 
-    <!-- Subtle molecular network in background (upper area) -->
-    <!-- Bonds - very subtle -->
-    <line x1="150" y1="80" x2="108" y2="104" stroke="#64d8ff" stroke-width="1" opacity="0.25"/>
-    <line x1="150" y1="80" x2="192" y2="104" stroke="#64d8ff" stroke-width="1" opacity="0.25"/>
-    <line x1="150" y1="80" x2="150" y2="112" stroke="#64d8ff" stroke-width="1" opacity="0.25"/>
-    <line x1="108" y1="104" x2="76" y2="90" stroke="#64d8ff" stroke-width="1" opacity="0.18"/>
-    <line x1="192" y1="104" x2="224" y2="90" stroke="#64d8ff" stroke-width="1" opacity="0.18"/>
+    <!-- Bonds — gray sticks -->
+    <!-- Double bond: Si to O-top (two parallel lines) -->
+    <line x1="147" y1="88" x2="147" y2="58" stroke="#b0b0b0" stroke-width="3" stroke-linecap="round"/>
+    <line x1="153" y1="88" x2="153" y2="58" stroke="#b0b0b0" stroke-width="3" stroke-linecap="round"/>
+    <!-- Si to O-left -->
+    <line x1="146" y1="95" x2="116" y2="120" stroke="#c0c0c0" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- Si to O-right -->
+    <line x1="154" y1="95" x2="184" y2="120" stroke="#c0c0c0" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- O-left to Na-left -->
+    <line x1="109" y1="127" x2="76" y2="150" stroke="#c0c0c0" stroke-width="3.5" stroke-linecap="round"/>
+    <!-- O-right to Na-right -->
+    <line x1="191" y1="127" x2="224" y2="150" stroke="#c0c0c0" stroke-width="3.5" stroke-linecap="round"/>
 
-    <!-- Outer nodes (Na) -->
-    <circle cx="72" cy="87" r="8" fill="url(#node-blue)" opacity="0.35" filter="url(#glow)"/>
-    <circle cx="228" cy="87" r="8" fill="url(#node-blue)" opacity="0.35" filter="url(#glow)"/>
+    <!-- Na left (large purple) -->
+    <circle cx="66" cy="158" r="20" fill="url(#na)" filter="url(#atom-glow)"/>
+    <!-- Na right (large purple) -->
+    <circle cx="234" cy="158" r="20" fill="url(#na)" filter="url(#atom-glow)"/>
 
-    <!-- Mid nodes (O) -->
-    <circle cx="106" cy="106" r="9" fill="url(#node-gold)" opacity="0.4" filter="url(#glow)"/>
-    <circle cx="194" cy="106" r="9" fill="url(#node-gold)" opacity="0.4" filter="url(#glow)"/>
-    <circle cx="150" cy="116" r="9" fill="url(#node-gold)" opacity="0.4" filter="url(#glow)"/>
+    <!-- O left (red) -->
+    <circle cx="112" cy="124" r="13" fill="url(#ox)" filter="url(#atom-glow)"/>
+    <!-- O right (red) -->
+    <circle cx="188" cy="124" r="13" fill="url(#ox)" filter="url(#atom-glow)"/>
+    <!-- O top (red, double bond) -->
+    <circle cx="150" cy="52" r="13" fill="url(#ox)" filter="url(#atom-glow)"/>
 
-    <!-- Center node (Si) - slightly more visible -->
-    <circle cx="150" cy="76" r="14" fill="url(#node-blue)" opacity="0.5" filter="url(#glow)"/>
-    <circle cx="150" cy="76" r="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <!-- Si center (beige, medium) -->
+    <circle cx="150" cy="92" r="17" fill="url(#si)" filter="url(#atom-glow)"/>
 
   </g>
 
   <!-- Hexagon border -->
   <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"
-           fill="none" stroke="#64d8ff" stroke-width="2" opacity="0.7" filter="url(#glow)"/>
-  <polygon points="150,22 256,84 256,204 150,266 44,204 44,84"
-           fill="none" stroke="#e8a020" stroke-width="0.8" opacity="0.3"/>
+           fill="none" stroke="#e8a020" stroke-width="3"/>
+  <polygon points="150,20 257,83 257,205 150,268 43,205 43,83"
+           fill="none" stroke="rgba(100,216,255,0.25)" stroke-width="1"/>
 
-  <!-- ZZT — dominant foreground text -->
-  <text x="150" y="200"
+  <!-- ZZT — large and dominant -->
+  <text x="150" y="205"
         font-family="Arial Black, Arial, sans-serif"
         font-weight="900"
-        font-size="108"
+        font-size="110"
         fill="#ffffff"
         text-anchor="middle"
         letter-spacing="-4"
         filter="url(#text-glow)">ZZT</text>
 
   <!-- INDUSTRIAL SUPPLIES -->
-  <text x="150" y="228"
+  <text x="150" y="232"
         font-family="Arial, sans-serif"
-        font-size="13"
-        fill="#64d8ff"
+        font-size="12.5"
+        fill="#e8a020"
         text-anchor="middle"
-        letter-spacing="3">INDUSTRIAL SUPPLIES</text>
+        letter-spacing="2.5">INDUSTRIAL SUPPLIES</text>
 
 </svg>

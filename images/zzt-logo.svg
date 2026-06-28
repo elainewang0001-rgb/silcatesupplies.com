@@ -1,79 +1,97 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
   <defs>
-    <!-- 3D sphere gradients -->
-    <radialGradient id="si-grad" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#f5d060"/>
-      <stop offset="100%" stop-color="#b8860b"/>
+    <!-- Glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-strong" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Background gradient -->
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#0d2640"/>
+      <stop offset="100%" stop-color="#060f1a"/>
     </radialGradient>
-    <radialGradient id="o-grad" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#ff8a80"/>
-      <stop offset="100%" stop-color="#c62828"/>
+
+    <!-- Node gradients -->
+    <radialGradient id="node-main" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#64d8ff"/>
+      <stop offset="100%" stop-color="#0077b5"/>
     </radialGradient>
-    <radialGradient id="na-grad" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#90caf9"/>
-      <stop offset="100%" stop-color="#1565c0"/>
+    <radialGradient id="node-accent" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ffe066"/>
+      <stop offset="100%" stop-color="#e8a020"/>
     </radialGradient>
+    <radialGradient id="node-small" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#a0e4ff"/>
+      <stop offset="100%" stop-color="#1a7abf"/>
+    </radialGradient>
+
+    <!-- Line gradient -->
+    <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#64d8ff" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#64d8ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#e8a020" stop-opacity="0.2"/>
+    </linearGradient>
   </defs>
 
   <!-- Hexagon background -->
-  <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"
-           fill="#1a3c5e" stroke="#e8a020" stroke-width="5"/>
+  <polygon points="150,10 268,76 268,210 150,276 32,210 32,76"
+           fill="url(#bg-grad)"/>
 
-  <!-- Inner hexagon ring -->
-  <polygon points="150,30 248,87 248,200 150,257 52,200 52,87"
-           fill="none" stroke="rgba(232,160,32,0.25)" stroke-width="1.5"/>
+  <!-- Outer hexagon border with glow -->
+  <polygon points="150,10 268,76 268,210 150,276 32,210 32,76"
+           fill="none" stroke="#64d8ff" stroke-width="1.5" opacity="0.6" filter="url(#glow)"/>
 
-  <!-- ===== Na2SiO3 Ball-and-Stick ===== -->
-  <!-- Bond lines (drawn first, behind atoms) -->
-  <!-- Si to O-left -->
-  <line x1="150" y1="108" x2="100" y2="135" stroke="rgba(255,255,255,0.7)" stroke-width="4" stroke-linecap="round"/>
-  <!-- Si to O-right -->
-  <line x1="150" y1="108" x2="200" y2="135" stroke="rgba(255,255,255,0.7)" stroke-width="4" stroke-linecap="round"/>
-  <!-- Si to O-bottom -->
-  <line x1="150" y1="108" x2="150" y2="152" stroke="rgba(255,255,255,0.7)" stroke-width="4" stroke-linecap="round"/>
-  <!-- O-left to Na-left -->
-  <line x1="100" y1="135" x2="62" y2="118" stroke="rgba(255,255,255,0.45)" stroke-width="3" stroke-linecap="round"/>
-  <!-- O-right to Na-right -->
-  <line x1="200" y1="135" x2="238" y2="118" stroke="rgba(255,255,255,0.45)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Inner hexagon -->
+  <polygon points="150,32 248,88 248,200 150,256 52,200 52,88"
+           fill="none" stroke="#e8a020" stroke-width="0.8" opacity="0.3"/>
 
-  <!-- Na left atom -->
-  <circle cx="56" cy="113" r="20" fill="url(#na-grad)"/>
-  <text x="56" y="118" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Na</text>
+  <!-- Abstract molecular network -->
+  <!-- Connection lines -->
+  <line x1="150" y1="108" x2="96" y2="140" stroke="url(#line-grad)" stroke-width="2" opacity="0.8"/>
+  <line x1="150" y1="108" x2="204" y2="140" stroke="url(#line-grad)" stroke-width="2" opacity="0.8"/>
+  <line x1="150" y1="108" x2="150" y2="156" stroke="#64d8ff" stroke-width="2" opacity="0.7"/>
+  <line x1="96" y1="140" x2="58" y2="118" stroke="#64d8ff" stroke-width="1.5" opacity="0.5"/>
+  <line x1="204" y1="140" x2="242" y2="118" stroke="#64d8ff" stroke-width="1.5" opacity="0.5"/>
 
-  <!-- O left atom -->
-  <circle cx="97" cy="138" r="16" fill="url(#o-grad)"/>
-  <text x="97" y="143" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">O</text>
+  <!-- Dashed extension lines for futuristic feel -->
+  <line x1="58" y1="118" x2="40" y2="108" stroke="#64d8ff" stroke-width="1" stroke-dasharray="3,4" opacity="0.35"/>
+  <line x1="242" y1="118" x2="260" y2="108" stroke="#64d8ff" stroke-width="1" stroke-dasharray="3,4" opacity="0.35"/>
+  <line x1="150" y1="156" x2="150" y2="172" stroke="#64d8ff" stroke-width="1" stroke-dasharray="3,4" opacity="0.35"/>
 
-  <!-- Si center atom (largest) -->
-  <circle cx="150" cy="103" r="24" fill="url(#si-grad)"/>
-  <text x="150" y="109" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white" text-anchor="middle">Si</text>
+  <!-- Outer nodes (Na — abstract) -->
+  <circle cx="52" cy="113" r="10" fill="url(#node-small)" filter="url(#glow)"/>
+  <circle cx="248" cy="113" r="10" fill="url(#node-small)" filter="url(#glow)"/>
 
-  <!-- O right atom -->
-  <circle cx="203" cy="138" r="16" fill="url(#o-grad)"/>
-  <text x="203" y="143" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">O</text>
+  <!-- Mid nodes (O — abstract) -->
+  <circle cx="93" cy="142" r="13" fill="url(#node-accent)" filter="url(#glow)"/>
+  <circle cx="207" cy="142" r="13" fill="url(#node-accent)" filter="url(#glow)"/>
+  <circle cx="150" cy="160" r="13" fill="url(#node-accent)" filter="url(#glow)"/>
 
-  <!-- Na right atom -->
-  <circle cx="244" cy="113" r="20" fill="url(#na-grad)"/>
-  <text x="244" y="118" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Na</text>
-
-  <!-- O bottom atom -->
-  <circle cx="150" cy="158" r="16" fill="url(#o-grad)"/>
-  <text x="150" y="163" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">O</text>
+  <!-- Center node (Si — abstract, largest) -->
+  <circle cx="150" cy="104" r="20" fill="url(#node-main)" filter="url(#glow-strong)"/>
+  <!-- Inner ring on center node -->
+  <circle cx="150" cy="104" r="13" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
 
   <!-- ZZT Text -->
-  <text x="150" y="218"
+  <text x="150" y="220"
         font-family="Arial Black, Arial, sans-serif"
         font-weight="900"
-        font-size="62"
+        font-size="64"
         fill="#ffffff"
         text-anchor="middle"
-        letter-spacing="-2">ZZT</text>
+        letter-spacing="-2"
+        filter="url(#glow)">ZZT</text>
 
   <!-- INDUSTRIAL SUPPLIES -->
-  <text x="150" y="238"
+  <text x="150" y="242"
         font-family="Arial, sans-serif"
-        font-size="13"
-        fill="#e8a020"
+        font-size="12"
+        fill="#64d8ff"
         text-anchor="middle"
-        letter-spacing="2">INDUSTRIAL SUPPLIES</text>
+        letter-spacing="3">INDUSTRIAL SUPPLIES</text>
 </svg>

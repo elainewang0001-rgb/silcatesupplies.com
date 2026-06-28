@@ -1,97 +1,83 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
   <defs>
-    <!-- Glow filter -->
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="glow-strong" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="5" result="blur"/>
+    <filter id="text-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-
-    <!-- Background gradient -->
-    <radialGradient id="bg-grad" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#0d2640"/>
+    <radialGradient id="bg-grad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0d2a47"/>
       <stop offset="100%" stop-color="#060f1a"/>
     </radialGradient>
-
-    <!-- Node gradients -->
-    <radialGradient id="node-main" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#64d8ff"/>
-      <stop offset="100%" stop-color="#0077b5"/>
+    <radialGradient id="node-blue" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#90d8ff"/>
+      <stop offset="100%" stop-color="#1a7abf"/>
     </radialGradient>
-    <radialGradient id="node-accent" cx="35%" cy="30%" r="65%">
+    <radialGradient id="node-gold" cx="35%" cy="30%" r="65%">
       <stop offset="0%" stop-color="#ffe066"/>
       <stop offset="100%" stop-color="#e8a020"/>
     </radialGradient>
-    <radialGradient id="node-small" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#a0e4ff"/>
-      <stop offset="100%" stop-color="#1a7abf"/>
-    </radialGradient>
-
-    <!-- Line gradient -->
-    <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#64d8ff" stop-opacity="0.2"/>
-      <stop offset="50%" stop-color="#64d8ff" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#e8a020" stop-opacity="0.2"/>
-    </linearGradient>
+    <!-- Clip to hexagon -->
+    <clipPath id="hex-clip">
+      <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"/>
+    </clipPath>
   </defs>
 
   <!-- Hexagon background -->
-  <polygon points="150,10 268,76 268,210 150,276 32,210 32,76"
+  <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"
            fill="url(#bg-grad)"/>
 
-  <!-- Outer hexagon border with glow -->
-  <polygon points="150,10 268,76 268,210 150,276 32,210 32,76"
-           fill="none" stroke="#64d8ff" stroke-width="1.5" opacity="0.6" filter="url(#glow)"/>
+  <!-- Everything clipped inside hexagon -->
+  <g clip-path="url(#hex-clip)">
 
-  <!-- Inner hexagon -->
-  <polygon points="150,32 248,88 248,200 150,256 52,200 52,88"
+    <!-- Subtle molecular network in background (upper area) -->
+    <!-- Bonds - very subtle -->
+    <line x1="150" y1="80" x2="108" y2="104" stroke="#64d8ff" stroke-width="1" opacity="0.25"/>
+    <line x1="150" y1="80" x2="192" y2="104" stroke="#64d8ff" stroke-width="1" opacity="0.25"/>
+    <line x1="150" y1="80" x2="150" y2="112" stroke="#64d8ff" stroke-width="1" opacity="0.25"/>
+    <line x1="108" y1="104" x2="76" y2="90" stroke="#64d8ff" stroke-width="1" opacity="0.18"/>
+    <line x1="192" y1="104" x2="224" y2="90" stroke="#64d8ff" stroke-width="1" opacity="0.18"/>
+
+    <!-- Outer nodes (Na) -->
+    <circle cx="72" cy="87" r="8" fill="url(#node-blue)" opacity="0.35" filter="url(#glow)"/>
+    <circle cx="228" cy="87" r="8" fill="url(#node-blue)" opacity="0.35" filter="url(#glow)"/>
+
+    <!-- Mid nodes (O) -->
+    <circle cx="106" cy="106" r="9" fill="url(#node-gold)" opacity="0.4" filter="url(#glow)"/>
+    <circle cx="194" cy="106" r="9" fill="url(#node-gold)" opacity="0.4" filter="url(#glow)"/>
+    <circle cx="150" cy="116" r="9" fill="url(#node-gold)" opacity="0.4" filter="url(#glow)"/>
+
+    <!-- Center node (Si) - slightly more visible -->
+    <circle cx="150" cy="76" r="14" fill="url(#node-blue)" opacity="0.5" filter="url(#glow)"/>
+    <circle cx="150" cy="76" r="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+
+  </g>
+
+  <!-- Hexagon border -->
+  <polygon points="150,12 264,78 264,210 150,276 36,210 36,78"
+           fill="none" stroke="#64d8ff" stroke-width="2" opacity="0.7" filter="url(#glow)"/>
+  <polygon points="150,22 256,84 256,204 150,266 44,204 44,84"
            fill="none" stroke="#e8a020" stroke-width="0.8" opacity="0.3"/>
 
-  <!-- Abstract molecular network -->
-  <!-- Connection lines -->
-  <line x1="150" y1="108" x2="96" y2="140" stroke="url(#line-grad)" stroke-width="2" opacity="0.8"/>
-  <line x1="150" y1="108" x2="204" y2="140" stroke="url(#line-grad)" stroke-width="2" opacity="0.8"/>
-  <line x1="150" y1="108" x2="150" y2="156" stroke="#64d8ff" stroke-width="2" opacity="0.7"/>
-  <line x1="96" y1="140" x2="58" y2="118" stroke="#64d8ff" stroke-width="1.5" opacity="0.5"/>
-  <line x1="204" y1="140" x2="242" y2="118" stroke="#64d8ff" stroke-width="1.5" opacity="0.5"/>
-
-  <!-- Dashed extension lines for futuristic feel -->
-  <line x1="58" y1="118" x2="40" y2="108" stroke="#64d8ff" stroke-width="1" stroke-dasharray="3,4" opacity="0.35"/>
-  <line x1="242" y1="118" x2="260" y2="108" stroke="#64d8ff" stroke-width="1" stroke-dasharray="3,4" opacity="0.35"/>
-  <line x1="150" y1="156" x2="150" y2="172" stroke="#64d8ff" stroke-width="1" stroke-dasharray="3,4" opacity="0.35"/>
-
-  <!-- Outer nodes (Na — abstract) -->
-  <circle cx="52" cy="113" r="10" fill="url(#node-small)" filter="url(#glow)"/>
-  <circle cx="248" cy="113" r="10" fill="url(#node-small)" filter="url(#glow)"/>
-
-  <!-- Mid nodes (O — abstract) -->
-  <circle cx="93" cy="142" r="13" fill="url(#node-accent)" filter="url(#glow)"/>
-  <circle cx="207" cy="142" r="13" fill="url(#node-accent)" filter="url(#glow)"/>
-  <circle cx="150" cy="160" r="13" fill="url(#node-accent)" filter="url(#glow)"/>
-
-  <!-- Center node (Si — abstract, largest) -->
-  <circle cx="150" cy="104" r="20" fill="url(#node-main)" filter="url(#glow-strong)"/>
-  <!-- Inner ring on center node -->
-  <circle cx="150" cy="104" r="13" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-
-  <!-- ZZT Text -->
-  <text x="150" y="220"
+  <!-- ZZT — dominant foreground text -->
+  <text x="150" y="200"
         font-family="Arial Black, Arial, sans-serif"
         font-weight="900"
-        font-size="64"
+        font-size="108"
         fill="#ffffff"
         text-anchor="middle"
-        letter-spacing="-2"
-        filter="url(#glow)">ZZT</text>
+        letter-spacing="-4"
+        filter="url(#text-glow)">ZZT</text>
 
   <!-- INDUSTRIAL SUPPLIES -->
-  <text x="150" y="242"
+  <text x="150" y="228"
         font-family="Arial, sans-serif"
-        font-size="12"
+        font-size="13"
         fill="#64d8ff"
         text-anchor="middle"
         letter-spacing="3">INDUSTRIAL SUPPLIES</text>
+
 </svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- Hexagon background (chemistry reference) -->
+  <polygon points="150,20 260,80 260,200 150,260 40,200 40,80"
+           fill="#1a3c5e" stroke="#e8a020" stroke-width="6"/>
+
+  <!-- Inner hexagon accent -->
+  <polygon points="150,45 238,95 238,195 150,245 62,195 62,95"
+           fill="none" stroke="#e8a020" stroke-width="2" opacity="0.4"/>
+
+  <!-- ZZT Text -->
+  <text x="150" y="175"
+        font-family="Arial Black, Arial, sans-serif"
+        font-weight="900"
+        font-size="90"
+        fill="#ffffff"
+        text-anchor="middle"
+        letter-spacing="-4">ZZT</text>
+
+  <!-- Tagline -->
+  <text x="150" y="210"
+        font-family="Arial, sans-serif"
+        font-size="18"
+        fill="#e8a020"
+        text-anchor="middle"
+        letter-spacing="3">INDUSTRIAL</text>
+</svg>

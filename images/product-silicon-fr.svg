@@ -1,0 +1,59 @@
+<svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1e35"/>
+      <stop offset="100%" stop-color="#1a3c5e"/>
+    </linearGradient>
+    <linearGradient id="fl" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#c0290a"/>
+      <stop offset="45%" stop-color="#e8621a"/>
+      <stop offset="100%" stop-color="#f5c030"/>
+    </linearGradient>
+    <linearGradient id="fl2" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#e8a020"/>
+      <stop offset="100%" stop-color="#fff8c0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="58%" r="42%">
+      <stop offset="0%" stop-color="#e8621a" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#e8621a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <rect width="600" height="380" fill="url(#bg)"/>
+  <!-- subtle dot grid -->
+  <g opacity="0.06" fill="#ffffff">
+    <circle cx="60" cy="40" r="1.5"/><circle cx="120" cy="40" r="1.5"/><circle cx="180" cy="40" r="1.5"/>
+    <circle cx="240" cy="40" r="1.5"/><circle cx="300" cy="40" r="1.5"/><circle cx="360" cy="40" r="1.5"/>
+    <circle cx="420" cy="40" r="1.5"/><circle cx="480" cy="40" r="1.5"/><circle cx="540" cy="40" r="1.5"/>
+    <circle cx="60" cy="100" r="1.5"/><circle cx="120" cy="100" r="1.5"/><circle cx="180" cy="100" r="1.5"/>
+    <circle cx="540" cy="100" r="1.5"/><circle cx="480" cy="100" r="1.5"/>
+    <circle cx="60" cy="160" r="1.5"/><circle cx="540" cy="160" r="1.5"/>
+    <circle cx="60" cy="220" r="1.5"/><circle cx="540" cy="220" r="1.5"/>
+    <circle cx="60" cy="280" r="1.5"/><circle cx="120" cy="280" r="1.5"/><circle cx="480" cy="280" r="1.5"/><circle cx="540" cy="280" r="1.5"/>
+    <circle cx="60" cy="340" r="1.5"/><circle cx="120" cy="340" r="1.5"/><circle cx="180" cy="340" r="1.5"/>
+    <circle cx="300" cy="340" r="1.5"/><circle cx="420" cy="340" r="1.5"/><circle cx="480" cy="340" r="1.5"/><circle cx="540" cy="340" r="1.5"/>
+  </g>
+  <!-- glow -->
+  <ellipse cx="300" cy="220" rx="130" ry="100" fill="url(#glow)" filter="url(#blur)"/>
+  <!-- outer protective ring -->
+  <circle cx="300" cy="210" r="145" fill="none" stroke="#e8a020" stroke-width="1.5" stroke-dasharray="10,6" opacity="0.5"/>
+  <circle cx="300" cy="210" r="160" fill="none" stroke="#e8a020" stroke-width="0.5" opacity="0.2"/>
+  <!-- flame outer -->
+  <path d="M300,75 C318,108 358,128 352,168 C346,208 368,222 346,258 C326,292 282,306 260,284 C238,262 242,232 252,204 C262,174 232,152 244,118 C256,84 282,56 300,75Z" fill="url(#fl)" opacity="0.95"/>
+  <!-- flame middle -->
+  <path d="M300,118 C312,140 330,154 325,178 C320,202 332,210 316,234 C304,252 280,258 270,242 C260,226 264,208 270,190 C278,166 260,152 266,132 C274,110 288,96 300,118Z" fill="url(#fl2)" opacity="0.88"/>
+  <!-- flame inner core -->
+  <path d="M300,152 C307,166 318,172 315,186 C312,200 320,204 310,220 C304,230 290,234 284,224 C278,214 282,202 286,192 C292,176 282,168 286,154 C290,140 294,138 300,152Z" fill="#fffde0" opacity="0.7"/>
+  <!-- badge top -->
+  <rect x="170" y="14" width="260" height="28" rx="14" fill="#e8a020" opacity="0.15"/>
+  <text x="300" y="32" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#e8a020" letter-spacing="1">NO.1 GLOBAL MARKET SHARE</text>
+  <!-- product name bottom -->
+  <text x="300" y="348" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="800" fill="#ffffff">Silicon-Based Flame Retardant</text>
+  <!-- spec pills -->
+  <rect x="148" y="358" width="100" height="18" rx="9" fill="#1a3c5e"/>
+  <text x="198" y="371" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#e8a020" font-weight="600">LOI ≥ 29%</text>
+  <rect x="258" y="358" width="86" height="18" rx="9" fill="#1a3c5e"/>
+  <text x="301" y="371" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#e8a020" font-weight="600">Halogen-Free</text>
+  <rect x="354" y="358" width="100" height="18" rx="9" fill="#1a3c5e"/>
+  <text x="404" y="371" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#e8a020" font-weight="600">Anti-Dripping</text>
+</svg>

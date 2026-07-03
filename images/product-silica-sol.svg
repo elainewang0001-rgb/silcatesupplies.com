@@ -1,0 +1,73 @@
+<svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#04101e"/>
+      <stop offset="100%" stop-color="#0a2040"/>
+    </linearGradient>
+    <radialGradient id="sphere" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#c8e8ff"/>
+      <stop offset="55%" stop-color="#5898cc"/>
+      <stop offset="100%" stop-color="#1a4878"/>
+    </radialGradient>
+    <radialGradient id="sphere2" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#d8f0ff"/>
+      <stop offset="55%" stop-color="#70a8d8"/>
+      <stop offset="100%" stop-color="#2558a8"/>
+    </radialGradient>
+    <radialGradient id="sphere3" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#b0d8ff"/>
+      <stop offset="55%" stop-color="#4880b8"/>
+      <stop offset="100%" stop-color="#1038680"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="380" fill="url(#bg)"/>
+  <!-- star field background -->
+  <g fill="#ffffff" opacity="0.12">
+    <circle cx="50" cy="30" r="1"/><circle cx="120" cy="55" r="1"/><circle cx="80" cy="90" r="1"/>
+    <circle cx="180" cy="25" r="1"/><circle cx="500" cy="35" r="1"/><circle cx="550" cy="70" r="1"/>
+    <circle cx="520" cy="120" r="1"/><circle cx="450" cy="22" r="1"/><circle cx="160" cy="330" r="1"/>
+    <circle cx="80" cy="310" r="1"/><circle cx="530" cy="300" r="1"/><circle cx="480" cy="340" r="1"/>
+  </g>
+  <!-- Colloidal silica particle arrangement — hexagonal close packing -->
+  <!-- Row 1 (top) -->
+  <circle cx="220" cy="120" r="32" fill="url(#sphere)" opacity="0.88"/>
+  <circle cx="284" cy="120" r="32" fill="url(#sphere2)" opacity="0.85"/>
+  <circle cx="348" cy="120" r="32" fill="url(#sphere)" opacity="0.88"/>
+  <!-- Row 2 (offset) -->
+  <circle cx="188" cy="176" r="32" fill="url(#sphere3)" opacity="0.82"/>
+  <circle cx="252" cy="176" r="32" fill="url(#sphere)" opacity="0.90"/>
+  <circle cx="316" cy="176" r="32" fill="url(#sphere2)" opacity="0.88"/>
+  <circle cx="380" cy="176" r="32" fill="url(#sphere)" opacity="0.82"/>
+  <!-- Row 3 (center, same as row 1) -->
+  <circle cx="220" cy="232" r="32" fill="url(#sphere2)" opacity="0.85"/>
+  <circle cx="284" cy="232" r="32" fill="url(#sphere)" opacity="0.92"/>
+  <circle cx="348" cy="232" r="32" fill="url(#sphere3)" opacity="0.85"/>
+  <!-- Row 4 (offset, same as row 2) -->
+  <circle cx="188" cy="288" r="32" fill="url(#sphere)" opacity="0.75"/>
+  <circle cx="252" cy="288" r="32" fill="url(#sphere2)" opacity="0.80"/>
+  <circle cx="316" cy="288" r="32" fill="url(#sphere)" opacity="0.78"/>
+  <circle cx="380" cy="288" r="32" fill="url(#sphere3)" opacity="0.75"/>
+  <!-- highlight specular on top-left of each sphere -->
+  <g fill="white" opacity="0.22">
+    <circle cx="208" cy="109" r="6"/><circle cx="272" cy="109" r="6"/><circle cx="336" cy="109" r="6"/>
+    <circle cx="176" cy="165" r="6"/><circle cx="240" cy="165" r="6"/><circle cx="304" cy="165" r="6"/><circle cx="368" cy="165" r="6"/>
+    <circle cx="208" cy="221" r="6"/><circle cx="272" cy="221" r="6"/><circle cx="336" cy="221" r="6"/>
+  </g>
+  <!-- nano scale label -->
+  <!-- size indicator line -->
+  <line x1="220" y1="156" x2="220" y2="162" stroke="#e8a020" stroke-width="1.5"/>
+  <line x1="220" y1="162" x2="252" y2="162" stroke="#e8a020" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="236" y="159" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="9" fill="#e8a020">5–100nm</text>
+  <!-- top badge -->
+  <rect x="178" y="14" width="244" height="26" rx="13" fill="#e8a020" opacity="0.18"/>
+  <text x="300" y="31" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#e8a020" letter-spacing="1">COLLOIDAL SILICA NANOPARTICLES</text>
+  <!-- bottom name -->
+  <text x="300" y="348" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="800" fill="#ffffff">Special Silica Sol</text>
+  <!-- spec pills -->
+  <rect x="130" y="358" width="108" height="18" rx="9" fill="#0a2040"/>
+  <text x="184" y="371" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#e8a020" font-weight="600">Particle 5–100 nm</text>
+  <rect x="248" y="358" width="104" height="18" rx="9" fill="#0a2040"/>
+  <text x="300" y="371" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#e8a020" font-weight="600">High Purity SiO₂</text>
+  <rect x="362" y="358" width="108" height="18" rx="9" fill="#0a2040"/>
+  <text x="416" y="371" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="10" fill="#e8a020" font-weight="600">Stable Dispersion</text>
+</svg>

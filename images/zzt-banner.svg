@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1128 191" width="1128" height="191">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#060f1a"/>
+      <stop offset="40%" stop-color="#0d2640"/>
+      <stop offset="100%" stop-color="#1a3c5e"/>
+    </linearGradient>
+    <linearGradient id="accent-line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="30%" stop-color="#e8a020"/>
+      <stop offset="70%" stop-color="#e8a020"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1128" height="191" fill="url(#bg)"/>
+
+  <!-- Subtle hexagon pattern (right side only) -->
+  <polygon points="950,10 990,33 990,79 950,102 910,79 910,33" fill="none" stroke="rgba(232,160,32,0.12)" stroke-width="1.5"/>
+  <polygon points="1020,30 1060,53 1060,99 1020,122 980,99 980,53" fill="none" stroke="rgba(100,216,255,0.1)" stroke-width="1"/>
+  <polygon points="1080,10 1120,33 1120,79 1080,102 1040,79 1040,33" fill="none" stroke="rgba(232,160,32,0.08)" stroke-width="1"/>
+
+  <!-- Gold accent lines -->
+  <rect x="0" y="0" width="1128" height="3" fill="url(#accent-line)"/>
+  <rect x="0" y="188" width="1128" height="3" fill="url(#accent-line)"/>
+
+  <!-- Vertical gold divider -->
+  <rect x="220" y="30" width="2" height="130" fill="#e8a020" opacity="0.5"/>
+
+  <!-- Left side — clear area for LinkedIn logo (first 200px kept empty) -->
+
+  <!-- Company name — starts at x=250 -->
+  <text x="250" y="75" font-family="Arial Black, sans-serif" font-size="38" font-weight="900" fill="#ffffff">ZZT Industrial Supplies</text>
+
+  <!-- Tagline -->
+  <text x="250" y="108" font-family="Arial, sans-serif" font-size="16" fill="#e8a020" letter-spacing="1">Global Supplier of Inorganic Silicon Compounds</text>
+
+  <!-- Stats -->
+  <text x="250" y="140" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">No.1 Global Share — Silicon-Based Flame Retardants  ·  71 Patents  ·  30+ Countries  ·  Est. 2011</text>
+
+  <!-- Website right side -->
+  <text x="1050" y="90" font-family="Arial, sans-serif" font-size="14" fill="#64d8ff" text-anchor="middle">silicatesupplies.com</text>
+  <text x="1050" y="112" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.5)" text-anchor="middle">Boston, Massachusetts</text>
+</svg>
